@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_12_203253) do
+ActiveRecord::Schema.define(version: 2019_08_13_012624) do
 
   create_table "shipping_rates", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2019_08_12_203253) do
     t.string "origin"
     t.string "destination"
     t.float "USD_rate"
+    t.integer "shipping_service_provider_id"
+    t.float "formatted_rate"
     t.index ["name"], name: "index_shipping_rates_on_name"
   end
 
@@ -27,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_08_12_203253) do
     t.integer "rate_cents", default: 0, null: false
     t.string "rate_currency", default: "USD", null: false
     t.float "USD_rate"
+    t.float "formatted_rate"
     t.index ["name"], name: "index_shipping_service_providers_on_name"
   end
 

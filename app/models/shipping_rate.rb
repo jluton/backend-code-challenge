@@ -1,15 +1,16 @@
 # == Schema Information
-# Schema version: 20190812203253
+# Schema version: 20190813000646
 #
 # Table name: shipping_rates
 #
-#  id            :integer          not null, primary key
-#  name          :string
-#  rate_cents    :integer          default(0), not null
-#  rate_currency :string           default("USD"), not null
-#  origin        :string
-#  destination   :string
-#  USD_rate      :float
+#  id                           :integer          not null, primary key
+#  name                         :string
+#  rate_cents                   :integer          default(0), not null
+#  rate_currency                :string           default("USD"), not null
+#  origin                       :string
+#  destination                  :string
+#  USD_rate                     :float
+#  shipping_service_provider_id :integer
 #
 # Indexes
 #
@@ -23,4 +24,6 @@ class ShippingRate < ActiveRecord::Base
 
   validates_length_of :origin, is: 2, allow_nil: false, message: 'must be 2-letter country code'
   validates_length_of :destination, is: 2, allow_nil: false, message: 'must be 2-letter country code'
+
+  belongs_to :shipping_service_provider
 end

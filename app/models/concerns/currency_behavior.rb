@@ -9,7 +9,7 @@ module CurrencyBehavior
   }
 
   included do
-    after_save :set_USD_rate, if: :updated_rate?
+    after_save :set_formatted_rates, if: :updated_rate?
   end
 
   def updated_rate?
@@ -18,12 +18,12 @@ module CurrencyBehavior
 
   # For this exercise I have simply rounded the conversion to the nearest cent.
   # For real-world applications, a more precise conversion may be warrented.
-  def set_USD_rate
+  def set_formatted_rates
     currency_code = self.rate.currency.iso_code
     rate_original = self.rate.fractional.to_f / 100
     rate_USD = rate_original * EXCHANGE_RATES_TO_USD[currency_code.to_sym]
 
-    self.assign_attributes(USD_rate: rate_USD.round(2))
+    self.assign_attributes(USD_rate: rate_USD.round(2), formatted_rate: rate_original.round(2))
     self.save!
   end
 end
