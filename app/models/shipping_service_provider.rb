@@ -22,10 +22,4 @@ class ShippingServiceProvider < ActiveRecord::Base
   monetize :rate_cents, as: 'rate', with_model_currency: :rate_currency
 
   has_many :shipping_rates
-
-  def self.import_csv(filepath)
-    CSV.each do |row|
-      byebug
-    end
-  end
 end

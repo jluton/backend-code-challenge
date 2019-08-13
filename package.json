@@ -1,5 +1,7 @@
 {
   "name": "backend-code-challenge",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.19.0"
+  }
 }

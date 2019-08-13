@@ -1,3 +1,19 @@
+ # Starting the app
+From the main repo, run "bundle install" to install the ruby gems.
+
+To import model data from the provided CSVs, Run
+  bundle exec rake import:shipping_service_providers"
+then
+  bundle exec rake import:shipping_rates
+
+To start the rails server run
+  bundle exec rails s -p 4000
+
+To start the React app, in another terminal window run
+  cd react-spa
+  npm i
+  npm run start
+
 # Fleet Backend Code Challenge
 
 Our codebase is mainly made up of two repos, one for Rails and one for Vue. The Rails side primarily exposes an API consumed by the Vue app. This code challenge is intended to reflect that. We'd like you to build a Rails application with a few key components to demonstrate proficiency in many common Ruby and Rails patterns, which you'll find yourself using day-to-day here.
